@@ -5,3 +5,5 @@ Images
 .env
 __pycache__/
 *.py[cod]
+*.so
+*.c

@@ -7,13 +7,13 @@ cdef int [:] xoffsets_view = xoffsets
 cdef int [:] yoffsets_view = yoffsets
 noffsets = 8
 
-@cython.boundscheck(False)  # Deactivate bounds checking
+#@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
 def findmaxima(float[:, ::1] img, float tol):
     cdef int [:] alm = all_local_max(img, tol)
     return findmax(img, alm, tol)
 
-@cython.boundscheck(False)  # Deactivate bounds checking
+#@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
 cdef int is_pixel_max(float[:,::1] img , int y0, int x0):
 
@@ -32,7 +32,7 @@ cdef int is_pixel_max(float[:,::1] img , int y0, int x0):
                 return 0
     return 1
 
-@cython.boundscheck(False)  # Deactivate bounds checking
+#@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
 def all_local_max(float[:, ::1] img, float tol):
 
@@ -63,7 +63,7 @@ def all_local_max(float[:, ::1] img, float tol):
     sp_vals = np.argsort(p_values[:found_maxima])
     return np.flip(p_indices[:found_maxima][sp_vals])
 
-@cython.boundscheck(False)  # Deactivate bounds checking
+#@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
 def findmax(float [:,::1] img, int [:] p_indices, float tol):
 
@@ -108,11 +108,7 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
         
         if peak_img_view[p] == 0:
             peak_img_view[p] = 32
-            #print(p, x, y, pval)
         else:
-            # if p == 508682:
-            #     print("continuing??", p, x, y, pval)
-            #print(p, x, y, pval, "continuing")
             continue
        
         while exnum > 0:
@@ -121,14 +117,23 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
 
             ex = pex % width
             ey = pex // width
+            
+            if (ex == 0) or (ey == 0):
+                continue
+            if (ex >= width - 1) or (ey >= height -1):
+                continue
+
             for k in range(noffsets):    
                 i = xoffsets_view[k]
                 j = yoffsets_view[k]
                 pij = width*(ey + j) + ex + i
-                #print(k, pij, x, y, ex + i, ey + j)
+                if pij >= width*height or pij < 0:
+                    print("out of bounds", pij)
+                    continue
 
                 clist_view[cinc] = pij
                 cinc += 1
+                
                 if peak_img_view[pij] >= 16:
                     continue
 
