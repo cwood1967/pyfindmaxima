@@ -1,0 +1,7 @@
+build
+Images
+.DS_Store
+.vscode
+.env
+__pycache__/
+*.py[cod]
