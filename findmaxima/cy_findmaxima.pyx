@@ -138,7 +138,7 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
             exlist0 += 1
             ex = pex % width
             ey = pex // width
-            #  print(index, x, y, ex, ey, "****", peak_img_view[pij])
+
             if (ex <= 0) or (ey <= 0):
                 exnum -= 1
                 continue
@@ -146,7 +146,6 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                 exnum -= 1
                 continue
             
-            #print(exinc, exnum, exlist0, cinc, pex)
             for k in range(noffsets):    
                 i = xoffsets_view[k]
                 j = yoffsets_view[k]
@@ -158,43 +157,30 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                     continue
                 
                 if clist_view[pij] == index:
-                    status = 6
-                    # if x == 675 and y == 881:
-                    #     print(index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij], exnum)
+                    status = 6            
                     continue
-                #clist_view[pij] = index
-                cinc += 1
-                # if is_in(clist_view, pij, cinc) == 0:
-                #     clist_view[cinc] = pij
-                #     cinc += 1
                 
-                if peak_img_view[pij] >= 16:
-                    status = 5
-                    # if x == 675 and y == 881:
-                    #     print(index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij], exnum)
-                    continue
+                cinc += 1
+                
+                # if peak_img_view[pij] >= 16:
+                #     status = 5
+                #     continue
 
                 exval = img[ey + j, ex + i]
 
                 if exval > pval:
-                    peak_img_view[p] = 2
+                    peak_img_view[p] = 11
+                    peak_img_view[pij] = 13
                     peak_list_view[peak_inc] = 0
                     is_peak = False
                     exnum = 1
                     status = 1
-                    # if x == 675 and y == 881:
-                    #     print(index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij])
                     break
 
                 if exval >= (pval - tol):
                     if peak_img_view[pij] == 8:
-
-                        #kg = False
                         if clist_view[pij] == index:
-                            #print(ex + i, ey + j, exval, ex, ey, pval)
                             status = 9
-                            # if x == 675 and y == 881:
-                            #     print(index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij])
                             continue
                         
                         status = 2
@@ -202,8 +188,7 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                         exnum = 1
 
                         peak_img_view[pij] = 8
-                        # if x == 675 and y == 881:
-                        #     print("**", index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij])
+                        peak_img_view[p] = 10
                         break
                     else:
                         if expixels_view[pij] != index:
@@ -217,8 +202,6 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                     peak_img_view[pij] = 8
                     status = 4
                 clist_view[pij] = index
-                # if x == 675 and y == 881:
-                #     print(index, x, y, ex, ey, ex + i, ey + j, status, peak_img_view[pij], exnum)
             exnum -= 1
             
         if is_peak:
@@ -226,7 +209,8 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
             peak_list_view[peak_inc] = p
             peak_inc += 1
         else:
-            peak_img_view[p] = 1
+            if peak_img_view[p] >= 16:
+                peak_img_view[p] = 1
     return peak_img, peak_list[:peak_inc]
                         
                     
