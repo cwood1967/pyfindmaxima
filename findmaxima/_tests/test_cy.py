@@ -8,7 +8,7 @@ tr = time.time()
 x = tifffile.imread("findmaxima/Images/test_09_02.tif")
 x = x.astype(np.float32)
 t0 = time.time()
-tol = 200
+tol = 400
 #res = all_local_max(x, tol)
 pk, pklist = findmaxima(x, tol)
 if 596732 in pklist:

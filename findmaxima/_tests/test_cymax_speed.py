@@ -7,12 +7,15 @@ import time
 
 from findmaxima.cy_findmaxima import findmaxima
 
-def openimage():
-    filename = "/Users/cjw/Desktop/Mitosis/nd2/Top1-SC2--GapR-Nhp2-006.nd2"
+
+def openimage(filename):
+    #filename = "/Users/cjw/Desktop/Mitosis/nd2/Top1-SC2--GapR-Nhp2-006.nd2"
     nd2 = nikonImage(filename)
     return nd2()
 
-x = openimage()
+filename = sys.argv[1]
+print(filename)
+x = openimage(filename)
 x = x.astype(np.float32)
 tol = 400
 tt =0

@@ -3,6 +3,7 @@ Images
 .DS_Store
 .vscode
 .env
+*__pycache__/
 __pycache__/
 *.py[cod]
 *.so
