@@ -16,7 +16,7 @@ def openimage(filename):
 filename = sys.argv[1]
 print(filename)
 x = openimage(filename)
-x = x.astype(np.float32)
+#x = x.astype(np.float32)
 tol = 400
 tt =0
 t0 = time.time()
@@ -24,7 +24,7 @@ pklist = list()
 for i in range(x.shape[0]):
     t1 = time.time()
     
-    res, plst = findmaxima(x[i,1,:,:], tol)
+    res, plst = findmaxima(x[i,1,:,:].astype(np.float32), tol)
     t2 = time.time()
     print("{:6}  {:8.1f} {:6}".format(i,1000*(t2 - t1), len(plst)))
     pklist.append(plst.copy())
