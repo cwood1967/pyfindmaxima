@@ -1,0 +1,7 @@
+setup.py
+Find_Maxima.egg-info/PKG-INFO
+Find_Maxima.egg-info/SOURCES.txt
+Find_Maxima.egg-info/dependency_links.txt
+Find_Maxima.egg-info/not-zip-safe
+Find_Maxima.egg-info/top_level.txt
+findmaxima/cy_findmaxima.c
