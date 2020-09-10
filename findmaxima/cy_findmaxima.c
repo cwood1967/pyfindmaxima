@@ -1687,13 +1687,6 @@ static CYTHON_INLINE int __pyx_memview_set_int(const char *itemp, PyObject *obj)
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
-/* Print.proto */
-static int __Pyx_Print(PyObject*, PyObject *, int);
-#if CYTHON_COMPILING_IN_PYPY || PY_MAJOR_VERSION >= 3
-static PyObject* __pyx_print = 0;
-static PyObject* __pyx_print_kwargs = 0;
-#endif
-
 /* MemviewSliceCopyTemplate.proto */
 static __Pyx_memviewslice
 __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
@@ -1706,9 +1699,6 @@ static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
-
-/* PrintOne.proto */
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE char __Pyx_PyInt_As_char(PyObject *);
@@ -1818,7 +1808,6 @@ static const char __pyx_k_kg[] = "kg";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_ns[] = "ns";
 static const char __pyx_k_alm[] = "alm";
-static const char __pyx_k_end[] = "end";
 static const char __pyx_k_img[] = "img";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
@@ -1830,7 +1819,7 @@ static const char __pyx_k_tol[] = "tol";
 static const char __pyx_k_base[] = "base";
 static const char __pyx_k_cinc[] = "cinc";
 static const char __pyx_k_dict[] = "__dict__";
-static const char __pyx_k_file[] = "file";
+static const char __pyx_k_find[] = "find";
 static const char __pyx_k_flip[] = "flip";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_mode[] = "mode";
@@ -1856,7 +1845,6 @@ static const char __pyx_k_flags[] = "flags";
 static const char __pyx_k_index[] = "index";
 static const char __pyx_k_int32[] = "int32";
 static const char __pyx_k_numpy[] = "numpy";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
@@ -1877,7 +1865,6 @@ static const char __pyx_k_update[] = "update";
 static const char __pyx_k_argsort[] = "argsort";
 static const char __pyx_k_consize[] = "consize";
 static const char __pyx_k_exlist0[] = "exlist0";
-static const char __pyx_k_findmax[] = "findmax";
 static const char __pyx_k_float32[] = "float32";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_is_peak[] = "is_peak";
@@ -1915,7 +1902,6 @@ static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
 static const char __pyx_k_all_local_max[] = "all_local_max";
 static const char __pyx_k_expixels_view[] = "expixels_view";
-static const char __pyx_k_out_of_bounds[] = "out of bounds";
 static const char __pyx_k_p_values_view[] = "p_values_view";
 static const char __pyx_k_peak_img_view[] = "peak_img_view";
 static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
@@ -1998,7 +1984,6 @@ static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_dtype_is_object;
 static PyObject *__pyx_n_s_encode;
-static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
 static PyObject *__pyx_n_s_ex;
@@ -2011,8 +1996,7 @@ static PyObject *__pyx_n_s_expixels;
 static PyObject *__pyx_n_s_expixels_view;
 static PyObject *__pyx_n_s_exval;
 static PyObject *__pyx_n_s_ey;
-static PyObject *__pyx_n_s_file;
-static PyObject *__pyx_n_s_findmax;
+static PyObject *__pyx_n_s_find;
 static PyObject *__pyx_n_s_findmaxima;
 static PyObject *__pyx_n_s_findmaxima_cy_findmaxima;
 static PyObject *__pyx_kp_s_findmaxima_cy_findmaxima_pyx;
@@ -2051,7 +2035,6 @@ static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_ns;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_n_s_obj;
-static PyObject *__pyx_kp_s_out_of_bounds;
 static PyObject *__pyx_n_s_p;
 static PyObject *__pyx_n_s_p_indices;
 static PyObject *__pyx_n_s_p_indices_view;
@@ -2067,7 +2050,6 @@ static PyObject *__pyx_n_s_pex;
 static PyObject *__pyx_n_s_pic;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pij;
-static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_pval;
 static PyObject *__pyx_n_s_pxy;
 static PyObject *__pyx_n_s_pyx_PickleError;
@@ -2111,7 +2093,7 @@ static PyObject *__pyx_n_s_yoffsets;
 static PyObject *__pyx_n_s_zeros;
 static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_findmaxima(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, float __pyx_v_tol); /* proto */
 static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_2all_local_max(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, float __pyx_v_tol); /* proto */
-static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, __Pyx_memviewslice __pyx_v_p_indices, float __pyx_v_tol); /* proto */
+static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4find(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, __Pyx_memviewslice __pyx_v_p_indices, float __pyx_v_tol); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2201,7 +2183,7 @@ static PyObject *__pyx_codeobj__31;
  * @cython.wraparound(False)
  * def findmaxima(float[:, ::1] img, float tol):             # <<<<<<<<<<<<<<
  *     cdef int [:] alm = all_local_max(img, tol)
- *     return findmax(img, alm, tol)
+ *     return find(img, alm, tol)
  */
 
 /* Python wrapper */
@@ -2291,7 +2273,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_findmaxima(CYTHON_UNUSED 
  * @cython.wraparound(False)
  * def findmaxima(float[:, ::1] img, float tol):
  *     cdef int [:] alm = all_local_max(img, tol)             # <<<<<<<<<<<<<<
- *     return findmax(img, alm, tol)
+ *     return find(img, alm, tol)
  * 
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_all_local_max); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
@@ -2358,12 +2340,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_findmaxima(CYTHON_UNUSED 
   /* "findmaxima/cy_findmaxima.pyx":14
  * def findmaxima(float[:, ::1] img, float tol):
  *     cdef int [:] alm = all_local_max(img, tol)
- *     return findmax(img, alm, tol)             # <<<<<<<<<<<<<<
+ *     return find(img, alm, tol)             # <<<<<<<<<<<<<<
  * 
  * #@cython.boundscheck(False)  # Deactivate bounds checking
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_findmax); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_find); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_7 = __pyx_memoryview_fromslice(__pyx_v_img, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
@@ -2434,7 +2416,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_findmaxima(CYTHON_UNUSED 
  * @cython.wraparound(False)
  * def findmaxima(float[:, ::1] img, float tol):             # <<<<<<<<<<<<<<
  *     cdef int [:] alm = all_local_max(img, tol)
- *     return findmax(img, alm, tol)
+ *     return find(img, alm, tol)
  */
 
   /* function exit code */
@@ -3144,18 +3126,18 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_2all_local_max(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "findmaxima/cy_findmaxima.pyx":79
+/* "findmaxima/cy_findmaxima.pyx":69
  * #@cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)
- * def findmax(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
+ * def find(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
  * 
  *     cdef int height = img.shape[0]
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5findmax(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_10findmaxima_13cy_findmaxima_5findmax = {"findmax", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10findmaxima_13cy_findmaxima_5findmax, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5findmax(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5find(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_10findmaxima_13cy_findmaxima_5find = {"find", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_10findmaxima_13cy_findmaxima_5find, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5find(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_img = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_p_indices = { 0, 0, { 0 }, { 0 }, { 0 } };
   float __pyx_v_tol;
@@ -3164,7 +3146,7 @@ static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5findmax(PyObject *__pyx_
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("findmax (wrapper)", 0);
+  __Pyx_RefNannySetupContext("find (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_img,&__pyx_n_s_p_indices,&__pyx_n_s_tol,0};
     PyObject* values[3] = {0,0,0};
@@ -3190,17 +3172,17 @@ static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5findmax(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_p_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("findmax", 1, 3, 3, 1); __PYX_ERR(0, 79, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find", 1, 3, 3, 1); __PYX_ERR(0, 69, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tol)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("findmax", 1, 3, 3, 2); __PYX_ERR(0, 79, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find", 1, 3, 3, 2); __PYX_ERR(0, 69, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "findmax") < 0)) __PYX_ERR(0, 79, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find") < 0)) __PYX_ERR(0, 69, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3209,26 +3191,26 @@ static PyObject *__pyx_pw_10findmaxima_13cy_findmaxima_5findmax(PyObject *__pyx_
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_img = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_img.memview)) __PYX_ERR(0, 79, __pyx_L3_error)
-    __pyx_v_p_indices = __Pyx_PyObject_to_MemoryviewSlice_ds_int(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_p_indices.memview)) __PYX_ERR(0, 79, __pyx_L3_error)
-    __pyx_v_tol = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_tol == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L3_error)
+    __pyx_v_img = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_img.memview)) __PYX_ERR(0, 69, __pyx_L3_error)
+    __pyx_v_p_indices = __Pyx_PyObject_to_MemoryviewSlice_ds_int(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_p_indices.memview)) __PYX_ERR(0, 69, __pyx_L3_error)
+    __pyx_v_tol = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_tol == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("findmax", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 79, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 69, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("findmaxima.cy_findmaxima.findmax", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("findmaxima.cy_findmaxima.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10findmaxima_13cy_findmaxima_4findmax(__pyx_self, __pyx_v_img, __pyx_v_p_indices, __pyx_v_tol);
+  __pyx_r = __pyx_pf_10findmaxima_13cy_findmaxima_4find(__pyx_self, __pyx_v_img, __pyx_v_p_indices, __pyx_v_tol);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, __Pyx_memviewslice __pyx_v_p_indices, float __pyx_v_tol) {
+static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4find(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_img, __Pyx_memviewslice __pyx_v_p_indices, float __pyx_v_tol) {
   int __pyx_v_height;
   int __pyx_v_width;
   int __pyx_v_consize;
@@ -3284,10 +3266,10 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("findmax", 0);
+  __Pyx_RefNannySetupContext("find", 0);
 
-  /* "findmaxima/cy_findmaxima.pyx":81
- * def findmax(float [:,::1] img, int [:] p_indices, float tol):
+  /* "findmaxima/cy_findmaxima.pyx":71
+ * def find(float [:,::1] img, int [:] p_indices, float tol):
  * 
  *     cdef int height = img.shape[0]             # <<<<<<<<<<<<<<
  *     cdef int width = img.shape[1]
@@ -3295,7 +3277,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_height = (__pyx_v_img.shape[0]);
 
-  /* "findmaxima/cy_findmaxima.pyx":82
+  /* "findmaxima/cy_findmaxima.pyx":72
  * 
  *     cdef int height = img.shape[0]
  *     cdef int width = img.shape[1]             # <<<<<<<<<<<<<<
@@ -3304,7 +3286,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_width = (__pyx_v_img.shape[1]);
 
-  /* "findmaxima/cy_findmaxima.pyx":83
+  /* "findmaxima/cy_findmaxima.pyx":73
  *     cdef int height = img.shape[0]
  *     cdef int width = img.shape[1]
  *     cdef int consize = width*height             # <<<<<<<<<<<<<<
@@ -3313,35 +3295,35 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_consize = (__pyx_v_width * __pyx_v_height);
 
-  /* "findmaxima/cy_findmaxima.pyx":85
+  /* "findmaxima/cy_findmaxima.pyx":75
  *     cdef int consize = width*height
  * 
  *     peak_img = np.zeros(height*width, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int [::1] peak_img_view = peak_img
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_height * __pyx_v_width)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_height * __pyx_v_width)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3349,19 +3331,19 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __pyx_v_peak_img = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":86
+  /* "findmaxima/cy_findmaxima.pyx":76
  * 
  *     peak_img = np.zeros(height*width, dtype=np.int32)
  *     cdef int [::1] peak_img_view = peak_img             # <<<<<<<<<<<<<<
  * 
  *     cdef int ns = p_indices.shape[0]
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_peak_img, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_peak_img, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 76, __pyx_L1_error)
   __pyx_v_peak_img_view = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "findmaxima/cy_findmaxima.pyx":88
+  /* "findmaxima/cy_findmaxima.pyx":78
  *     cdef int [::1] peak_img_view = peak_img
  * 
  *     cdef int ns = p_indices.shape[0]             # <<<<<<<<<<<<<<
@@ -3370,35 +3352,35 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_ns = (__pyx_v_p_indices.shape[0]);
 
-  /* "findmaxima/cy_findmaxima.pyx":89
+  /* "findmaxima/cy_findmaxima.pyx":79
  * 
  *     cdef int ns = p_indices.shape[0]
  *     peak_list = np.zeros(ns, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int [::1] peak_list_view = peak_list
  *     cdef int peak_inc = 0
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ns); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ns); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3406,19 +3388,19 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __pyx_v_peak_list = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":90
+  /* "findmaxima/cy_findmaxima.pyx":80
  *     cdef int ns = p_indices.shape[0]
  *     peak_list = np.zeros(ns, dtype=np.int32)
  *     cdef int [::1] peak_list_view = peak_list             # <<<<<<<<<<<<<<
  *     cdef int peak_inc = 0
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_peak_list, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_peak_list, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 80, __pyx_L1_error)
   __pyx_v_peak_list_view = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "findmaxima/cy_findmaxima.pyx":91
+  /* "findmaxima/cy_findmaxima.pyx":81
  *     peak_list = np.zeros(ns, dtype=np.int32)
  *     cdef int [::1] peak_list_view = peak_list
  *     cdef int peak_inc = 0             # <<<<<<<<<<<<<<
@@ -3427,35 +3409,35 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_peak_inc = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":93
+  /* "findmaxima/cy_findmaxima.pyx":83
  *     cdef int peak_inc = 0
  * 
  *     exlist = np.zeros(consize, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int [::1] exlist_view = exlist
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_2) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3463,47 +3445,47 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __pyx_v_exlist = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":94
+  /* "findmaxima/cy_findmaxima.pyx":84
  * 
  *     exlist = np.zeros(consize, dtype=np.int32)
  *     cdef int [::1] exlist_view = exlist             # <<<<<<<<<<<<<<
  * 
  *     expixels = np.zeros(consize, dtype=np.int32)
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_exlist, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_exlist, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 84, __pyx_L1_error)
   __pyx_v_exlist_view = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "findmaxima/cy_findmaxima.pyx":96
+  /* "findmaxima/cy_findmaxima.pyx":86
  *     cdef int [::1] exlist_view = exlist
  * 
  *     expixels = np.zeros(consize, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int [::1] expixels_view = expixels
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3511,47 +3493,47 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __pyx_v_expixels = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":97
+  /* "findmaxima/cy_findmaxima.pyx":87
  * 
  *     expixels = np.zeros(consize, dtype=np.int32)
  *     cdef int [::1] expixels_view = expixels             # <<<<<<<<<<<<<<
  * 
  *     clist = np.zeros(consize, dtype=np.int32)
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_expixels, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_expixels, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 87, __pyx_L1_error)
   __pyx_v_expixels_view = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "findmaxima/cy_findmaxima.pyx":99
+  /* "findmaxima/cy_findmaxima.pyx":89
  *     cdef int [::1] expixels_view = expixels
  * 
  *     clist = np.zeros(consize, dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int [::1] clist_view = clist
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_consize); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3559,19 +3541,19 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __pyx_v_clist = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":100
+  /* "findmaxima/cy_findmaxima.pyx":90
  * 
  *     clist = np.zeros(consize, dtype=np.int32)
  *     cdef int [::1] clist_view = clist             # <<<<<<<<<<<<<<
  * 
  *     cdef int exinc, cinc, exnum
  */
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_clist, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_clist, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 90, __pyx_L1_error)
   __pyx_v_clist_view = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "findmaxima/cy_findmaxima.pyx":109
+  /* "findmaxima/cy_findmaxima.pyx":99
  *     cdef float pval, exval
  *     cdef int status
  *     index = 0             # <<<<<<<<<<<<<<
@@ -3580,22 +3562,22 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
   __pyx_v_index = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":110
+  /* "findmaxima/cy_findmaxima.pyx":100
  *     cdef int status
  *     index = 0
  *     for p in p_indices:             # <<<<<<<<<<<<<<
  *         index += 1
  *         exinc = 0
  */
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_p_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_p_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
     __pyx_t_1 = __pyx_t_5; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   for (;;) {
@@ -3603,17 +3585,17 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -3623,17 +3605,17 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 110, __pyx_L1_error)
+          else __PYX_ERR(0, 100, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_5);
     }
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_p = __pyx_t_9;
 
-    /* "findmaxima/cy_findmaxima.pyx":111
+    /* "findmaxima/cy_findmaxima.pyx":101
  *     index = 0
  *     for p in p_indices:
  *         index += 1             # <<<<<<<<<<<<<<
@@ -3642,7 +3624,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "findmaxima/cy_findmaxima.pyx":112
+    /* "findmaxima/cy_findmaxima.pyx":102
  *     for p in p_indices:
  *         index += 1
  *         exinc = 0             # <<<<<<<<<<<<<<
@@ -3651,7 +3633,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_exinc = 0;
 
-    /* "findmaxima/cy_findmaxima.pyx":113
+    /* "findmaxima/cy_findmaxima.pyx":103
  *         index += 1
  *         exinc = 0
  *         exlist0 = 0             # <<<<<<<<<<<<<<
@@ -3660,7 +3642,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_exlist0 = 0;
 
-    /* "findmaxima/cy_findmaxima.pyx":114
+    /* "findmaxima/cy_findmaxima.pyx":104
  *         exinc = 0
  *         exlist0 = 0
  *         exlist_view[exinc] = p             # <<<<<<<<<<<<<<
@@ -3674,11 +3656,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     } else if (unlikely(__pyx_t_10 >= __pyx_v_exlist_view.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 114, __pyx_L1_error)
+      __PYX_ERR(0, 104, __pyx_L1_error)
     }
     *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_exlist_view.data) + __pyx_t_10)) )) = __pyx_v_p;
 
-    /* "findmaxima/cy_findmaxima.pyx":115
+    /* "findmaxima/cy_findmaxima.pyx":105
  *         exlist0 = 0
  *         exlist_view[exinc] = p
  *         exinc += 1             # <<<<<<<<<<<<<<
@@ -3687,7 +3669,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_exinc = (__pyx_v_exinc + 1);
 
-    /* "findmaxima/cy_findmaxima.pyx":116
+    /* "findmaxima/cy_findmaxima.pyx":106
  *         exlist_view[exinc] = p
  *         exinc += 1
  *         exnum = 1             # <<<<<<<<<<<<<<
@@ -3696,26 +3678,26 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_exnum = 1;
 
-    /* "findmaxima/cy_findmaxima.pyx":117
+    /* "findmaxima/cy_findmaxima.pyx":107
  *         exinc += 1
  *         exnum = 1
  *         cinc = 0             # <<<<<<<<<<<<<<
  *         status = 0
- *         # for k in range(consize):
+ * 
  */
     __pyx_v_cinc = 0;
 
-    /* "findmaxima/cy_findmaxima.pyx":118
+    /* "findmaxima/cy_findmaxima.pyx":108
  *         exnum = 1
  *         cinc = 0
  *         status = 0             # <<<<<<<<<<<<<<
- *         # for k in range(consize):
- *         #     clist_view[k] = 0
+ * 
+ *         expixels_view[p] = index
  */
     __pyx_v_status = 0;
 
-    /* "findmaxima/cy_findmaxima.pyx":123
- *         #     expixels_view[k] = 0
+    /* "findmaxima/cy_findmaxima.pyx":110
+ *         status = 0
  * 
  *         expixels_view[p] = index             # <<<<<<<<<<<<<<
  *         x = p % width
@@ -3728,11 +3710,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     } else if (unlikely(__pyx_t_10 >= __pyx_v_expixels_view.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 123, __pyx_L1_error)
+      __PYX_ERR(0, 110, __pyx_L1_error)
     }
     *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_expixels_view.data) + __pyx_t_10)) )) = __pyx_v_index;
 
-    /* "findmaxima/cy_findmaxima.pyx":124
+    /* "findmaxima/cy_findmaxima.pyx":111
  * 
  *         expixels_view[p] = index
  *         x = p % width             # <<<<<<<<<<<<<<
@@ -3741,11 +3723,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     if (unlikely(__pyx_v_width == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-      __PYX_ERR(0, 124, __pyx_L1_error)
+      __PYX_ERR(0, 111, __pyx_L1_error)
     }
     __pyx_v_x = __Pyx_mod_int(__pyx_v_p, __pyx_v_width);
 
-    /* "findmaxima/cy_findmaxima.pyx":125
+    /* "findmaxima/cy_findmaxima.pyx":112
  *         expixels_view[p] = index
  *         x = p % width
  *         y = p // width             # <<<<<<<<<<<<<<
@@ -3754,15 +3736,15 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     if (unlikely(__pyx_v_width == 0)) {
       PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-      __PYX_ERR(0, 125, __pyx_L1_error)
+      __PYX_ERR(0, 112, __pyx_L1_error)
     }
     else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_width == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_p))) {
       PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-      __PYX_ERR(0, 125, __pyx_L1_error)
+      __PYX_ERR(0, 112, __pyx_L1_error)
     }
     __pyx_v_y = __Pyx_div_int(__pyx_v_p, __pyx_v_width);
 
-    /* "findmaxima/cy_findmaxima.pyx":127
+    /* "findmaxima/cy_findmaxima.pyx":114
  *         y = p // width
  * 
  *         pval = img[y, x]             # <<<<<<<<<<<<<<
@@ -3780,11 +3762,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     } else if (unlikely(__pyx_t_11 >= __pyx_v_img.shape[1])) __pyx_t_9 = 1;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 127, __pyx_L1_error)
+      __PYX_ERR(0, 114, __pyx_L1_error)
     }
     __pyx_v_pval = (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_img.data + __pyx_t_10 * __pyx_v_img.strides[0]) )) + __pyx_t_11)) )));
 
-    /* "findmaxima/cy_findmaxima.pyx":128
+    /* "findmaxima/cy_findmaxima.pyx":115
  * 
  *         pval = img[y, x]
  *         is_peak = True             # <<<<<<<<<<<<<<
@@ -3793,7 +3775,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
     __pyx_v_is_peak = 1;
 
-    /* "findmaxima/cy_findmaxima.pyx":130
+    /* "findmaxima/cy_findmaxima.pyx":117
  *         is_peak = True
  * 
  *         if peak_img_view[p] == 0:             # <<<<<<<<<<<<<<
@@ -3807,12 +3789,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     } else if (unlikely(__pyx_t_11 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 130, __pyx_L1_error)
+      __PYX_ERR(0, 117, __pyx_L1_error)
     }
     __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_11)) ))) == 0) != 0);
     if (__pyx_t_12) {
 
-      /* "findmaxima/cy_findmaxima.pyx":131
+      /* "findmaxima/cy_findmaxima.pyx":118
  * 
  *         if peak_img_view[p] == 0:
  *             peak_img_view[p] = 32             # <<<<<<<<<<<<<<
@@ -3826,11 +3808,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       } else if (unlikely(__pyx_t_11 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 131, __pyx_L1_error)
+        __PYX_ERR(0, 118, __pyx_L1_error)
       }
       *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_11)) )) = 32;
 
-      /* "findmaxima/cy_findmaxima.pyx":130
+      /* "findmaxima/cy_findmaxima.pyx":117
  *         is_peak = True
  * 
  *         if peak_img_view[p] == 0:             # <<<<<<<<<<<<<<
@@ -3840,7 +3822,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       goto __pyx_L5;
     }
 
-    /* "findmaxima/cy_findmaxima.pyx":133
+    /* "findmaxima/cy_findmaxima.pyx":120
  *             peak_img_view[p] = 32
  *         else:
  *             continue             # <<<<<<<<<<<<<<
@@ -3852,7 +3834,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     }
     __pyx_L5:;
 
-    /* "findmaxima/cy_findmaxima.pyx":135
+    /* "findmaxima/cy_findmaxima.pyx":122
  *             continue
  * 
  *         while exnum > 0:             # <<<<<<<<<<<<<<
@@ -3863,7 +3845,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       __pyx_t_12 = ((__pyx_v_exnum > 0) != 0);
       if (!__pyx_t_12) break;
 
-      /* "findmaxima/cy_findmaxima.pyx":136
+      /* "findmaxima/cy_findmaxima.pyx":123
  * 
  *         while exnum > 0:
  *             status = 0             # <<<<<<<<<<<<<<
@@ -3872,7 +3854,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
       __pyx_v_status = 0;
 
-      /* "findmaxima/cy_findmaxima.pyx":137
+      /* "findmaxima/cy_findmaxima.pyx":124
  *         while exnum > 0:
  *             status = 0
  *             pex = exlist_view[exlist0]             # <<<<<<<<<<<<<<
@@ -3886,14 +3868,14 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       } else if (unlikely(__pyx_t_11 >= __pyx_v_exlist_view.shape[0])) __pyx_t_9 = 0;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 137, __pyx_L1_error)
+        __PYX_ERR(0, 124, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_PyInt_From_int((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_exlist_view.data) + __pyx_t_11)) )))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_exlist_view.data) + __pyx_t_11)) )))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_pex, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "findmaxima/cy_findmaxima.pyx":138
+      /* "findmaxima/cy_findmaxima.pyx":125
  *             status = 0
  *             pex = exlist_view[exlist0]
  *             exlist0 += 1             # <<<<<<<<<<<<<<
@@ -3902,39 +3884,39 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
       __pyx_v_exlist0 = (__pyx_v_exlist0 + 1);
 
-      /* "findmaxima/cy_findmaxima.pyx":139
+      /* "findmaxima/cy_findmaxima.pyx":126
  *             pex = exlist_view[exlist0]
  *             exlist0 += 1
  *             ex = pex % width             # <<<<<<<<<<<<<<
  *             ey = pex // width
  * 
  */
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = PyNumber_Remainder(__pyx_v_pex, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Remainder(__pyx_v_pex, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_ex = __pyx_t_9;
 
-      /* "findmaxima/cy_findmaxima.pyx":140
+      /* "findmaxima/cy_findmaxima.pyx":127
  *             exlist0 += 1
  *             ex = pex % width
  *             ey = pex // width             # <<<<<<<<<<<<<<
  * 
  *             if (ex <= 0) or (ey <= 0):
  */
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_width); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_5 = PyNumber_FloorDivide(__pyx_v_pex, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_FloorDivide(__pyx_v_pex, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_5); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_ey = __pyx_t_9;
 
-      /* "findmaxima/cy_findmaxima.pyx":142
+      /* "findmaxima/cy_findmaxima.pyx":129
  *             ey = pex // width
  * 
  *             if (ex <= 0) or (ey <= 0):             # <<<<<<<<<<<<<<
@@ -3952,7 +3934,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       __pyx_L9_bool_binop_done:;
       if (__pyx_t_12) {
 
-        /* "findmaxima/cy_findmaxima.pyx":143
+        /* "findmaxima/cy_findmaxima.pyx":130
  * 
  *             if (ex <= 0) or (ey <= 0):
  *                 exnum -= 1             # <<<<<<<<<<<<<<
@@ -3961,7 +3943,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         __pyx_v_exnum = (__pyx_v_exnum - 1);
 
-        /* "findmaxima/cy_findmaxima.pyx":144
+        /* "findmaxima/cy_findmaxima.pyx":131
  *             if (ex <= 0) or (ey <= 0):
  *                 exnum -= 1
  *                 continue             # <<<<<<<<<<<<<<
@@ -3970,7 +3952,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         goto __pyx_L6_continue;
 
-        /* "findmaxima/cy_findmaxima.pyx":142
+        /* "findmaxima/cy_findmaxima.pyx":129
  *             ey = pex // width
  * 
  *             if (ex <= 0) or (ey <= 0):             # <<<<<<<<<<<<<<
@@ -3979,7 +3961,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
       }
 
-      /* "findmaxima/cy_findmaxima.pyx":145
+      /* "findmaxima/cy_findmaxima.pyx":132
  *                 exnum -= 1
  *                 continue
  *             if (ex >= width - 1) or (ey >= height -1):             # <<<<<<<<<<<<<<
@@ -3997,7 +3979,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       __pyx_L12_bool_binop_done:;
       if (__pyx_t_12) {
 
-        /* "findmaxima/cy_findmaxima.pyx":146
+        /* "findmaxima/cy_findmaxima.pyx":133
  *                 continue
  *             if (ex >= width - 1) or (ey >= height -1):
  *                 exnum -= 1             # <<<<<<<<<<<<<<
@@ -4006,7 +3988,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         __pyx_v_exnum = (__pyx_v_exnum - 1);
 
-        /* "findmaxima/cy_findmaxima.pyx":147
+        /* "findmaxima/cy_findmaxima.pyx":134
  *             if (ex >= width - 1) or (ey >= height -1):
  *                 exnum -= 1
  *                 continue             # <<<<<<<<<<<<<<
@@ -4015,7 +3997,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         goto __pyx_L6_continue;
 
-        /* "findmaxima/cy_findmaxima.pyx":145
+        /* "findmaxima/cy_findmaxima.pyx":132
  *                 exnum -= 1
  *                 continue
  *             if (ex >= width - 1) or (ey >= height -1):             # <<<<<<<<<<<<<<
@@ -4024,29 +4006,29 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
       }
 
-      /* "findmaxima/cy_findmaxima.pyx":149
+      /* "findmaxima/cy_findmaxima.pyx":136
  *                 continue
  * 
  *             for k in range(noffsets):             # <<<<<<<<<<<<<<
  *                 i = xoffsets_view[k]
  *                 j = yoffsets_view[k]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_noffsets); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_noffsets); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_14 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_14 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_14 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_15 = __pyx_t_14;
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_15; __pyx_t_16+=1) {
         __pyx_v_k = __pyx_t_16;
 
-        /* "findmaxima/cy_findmaxima.pyx":150
+        /* "findmaxima/cy_findmaxima.pyx":137
  * 
  *             for k in range(noffsets):
  *                 i = xoffsets_view[k]             # <<<<<<<<<<<<<<
  *                 j = yoffsets_view[k]
  *                 pij = width*(ey + j) + ex + i
  */
-        if (unlikely(!__pyx_v_10findmaxima_13cy_findmaxima_xoffsets_view.memview)) { __Pyx_RaiseUnboundLocalError("xoffsets_view"); __PYX_ERR(0, 150, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_10findmaxima_13cy_findmaxima_xoffsets_view.memview)) { __Pyx_RaiseUnboundLocalError("xoffsets_view"); __PYX_ERR(0, 137, __pyx_L1_error) }
         __pyx_t_11 = __pyx_v_k;
         __pyx_t_9 = -1;
         if (__pyx_t_11 < 0) {
@@ -4054,18 +4036,18 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_11 >= __pyx_v_10findmaxima_13cy_findmaxima_xoffsets_view.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 150, __pyx_L1_error)
+          __PYX_ERR(0, 137, __pyx_L1_error)
         }
         __pyx_v_i = (*((int *) ( /* dim=0 */ (__pyx_v_10findmaxima_13cy_findmaxima_xoffsets_view.data + __pyx_t_11 * __pyx_v_10findmaxima_13cy_findmaxima_xoffsets_view.strides[0]) )));
 
-        /* "findmaxima/cy_findmaxima.pyx":151
+        /* "findmaxima/cy_findmaxima.pyx":138
  *             for k in range(noffsets):
  *                 i = xoffsets_view[k]
  *                 j = yoffsets_view[k]             # <<<<<<<<<<<<<<
  *                 pij = width*(ey + j) + ex + i
  *                 if pij == p:
  */
-        if (unlikely(!__pyx_v_10findmaxima_13cy_findmaxima_yoffsets_view.memview)) { __Pyx_RaiseUnboundLocalError("yoffsets_view"); __PYX_ERR(0, 151, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_10findmaxima_13cy_findmaxima_yoffsets_view.memview)) { __Pyx_RaiseUnboundLocalError("yoffsets_view"); __PYX_ERR(0, 138, __pyx_L1_error) }
         __pyx_t_11 = __pyx_v_k;
         __pyx_t_9 = -1;
         if (__pyx_t_11 < 0) {
@@ -4073,11 +4055,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_11 >= __pyx_v_10findmaxima_13cy_findmaxima_yoffsets_view.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 151, __pyx_L1_error)
+          __PYX_ERR(0, 138, __pyx_L1_error)
         }
         __pyx_v_j = (*((int *) ( /* dim=0 */ (__pyx_v_10findmaxima_13cy_findmaxima_yoffsets_view.data + __pyx_t_11 * __pyx_v_10findmaxima_13cy_findmaxima_yoffsets_view.strides[0]) )));
 
-        /* "findmaxima/cy_findmaxima.pyx":152
+        /* "findmaxima/cy_findmaxima.pyx":139
  *                 i = xoffsets_view[k]
  *                 j = yoffsets_view[k]
  *                 pij = width*(ey + j) + ex + i             # <<<<<<<<<<<<<<
@@ -4086,7 +4068,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         __pyx_v_pij = (((__pyx_v_width * (__pyx_v_ey + __pyx_v_j)) + __pyx_v_ex) + __pyx_v_i);
 
-        /* "findmaxima/cy_findmaxima.pyx":153
+        /* "findmaxima/cy_findmaxima.pyx":140
  *                 j = yoffsets_view[k]
  *                 pij = width*(ey + j) + ex + i
  *                 if pij == p:             # <<<<<<<<<<<<<<
@@ -4096,16 +4078,16 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         __pyx_t_12 = ((__pyx_v_pij == __pyx_v_p) != 0);
         if (__pyx_t_12) {
 
-          /* "findmaxima/cy_findmaxima.pyx":154
+          /* "findmaxima/cy_findmaxima.pyx":141
  *                 pij = width*(ey + j) + ex + i
  *                 if pij == p:
  *                     continue             # <<<<<<<<<<<<<<
  *                 if pij >= width*height or pij < 0:
- *                     print("out of bounds", pij)
+ *                     #print("out of bounds", pij)
  */
           goto __pyx_L14_continue;
 
-          /* "findmaxima/cy_findmaxima.pyx":153
+          /* "findmaxima/cy_findmaxima.pyx":140
  *                 j = yoffsets_view[k]
  *                 pij = width*(ey + j) + ex + i
  *                 if pij == p:             # <<<<<<<<<<<<<<
@@ -4114,11 +4096,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         }
 
-        /* "findmaxima/cy_findmaxima.pyx":155
+        /* "findmaxima/cy_findmaxima.pyx":142
  *                 if pij == p:
  *                     continue
  *                 if pij >= width*height or pij < 0:             # <<<<<<<<<<<<<<
- *                     print("out of bounds", pij)
+ *                     #print("out of bounds", pij)
  *                     continue
  */
         __pyx_t_13 = ((__pyx_v_pij >= (__pyx_v_width * __pyx_v_height)) != 0);
@@ -4132,45 +4114,25 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         __pyx_L18_bool_binop_done:;
         if (__pyx_t_12) {
 
-          /* "findmaxima/cy_findmaxima.pyx":156
- *                     continue
+          /* "findmaxima/cy_findmaxima.pyx":144
  *                 if pij >= width*height or pij < 0:
- *                     print("out of bounds", pij)             # <<<<<<<<<<<<<<
- *                     continue
- * 
- */
-          __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_pij); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_INCREF(__pyx_kp_s_out_of_bounds);
-          __Pyx_GIVEREF(__pyx_kp_s_out_of_bounds);
-          PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_s_out_of_bounds);
-          __Pyx_GIVEREF(__pyx_t_5);
-          PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_5);
-          __pyx_t_5 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 156, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-          /* "findmaxima/cy_findmaxima.pyx":157
- *                 if pij >= width*height or pij < 0:
- *                     print("out of bounds", pij)
+ *                     #print("out of bounds", pij)
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 if clist_view[pij] == index:
  */
           goto __pyx_L14_continue;
 
-          /* "findmaxima/cy_findmaxima.pyx":155
+          /* "findmaxima/cy_findmaxima.pyx":142
  *                 if pij == p:
  *                     continue
  *                 if pij >= width*height or pij < 0:             # <<<<<<<<<<<<<<
- *                     print("out of bounds", pij)
+ *                     #print("out of bounds", pij)
  *                     continue
  */
         }
 
-        /* "findmaxima/cy_findmaxima.pyx":159
+        /* "findmaxima/cy_findmaxima.pyx":146
  *                     continue
  * 
  *                 if clist_view[pij] == index:             # <<<<<<<<<<<<<<
@@ -4184,12 +4146,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_11 >= __pyx_v_clist_view.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 159, __pyx_L1_error)
+          __PYX_ERR(0, 146, __pyx_L1_error)
         }
         __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_clist_view.data) + __pyx_t_11)) ))) == __pyx_v_index) != 0);
         if (__pyx_t_12) {
 
-          /* "findmaxima/cy_findmaxima.pyx":160
+          /* "findmaxima/cy_findmaxima.pyx":147
  * 
  *                 if clist_view[pij] == index:
  *                     status = 6             # <<<<<<<<<<<<<<
@@ -4198,7 +4160,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           __pyx_v_status = 6;
 
-          /* "findmaxima/cy_findmaxima.pyx":161
+          /* "findmaxima/cy_findmaxima.pyx":148
  *                 if clist_view[pij] == index:
  *                     status = 6
  *                     continue             # <<<<<<<<<<<<<<
@@ -4207,7 +4169,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           goto __pyx_L14_continue;
 
-          /* "findmaxima/cy_findmaxima.pyx":159
+          /* "findmaxima/cy_findmaxima.pyx":146
  *                     continue
  * 
  *                 if clist_view[pij] == index:             # <<<<<<<<<<<<<<
@@ -4216,17 +4178,17 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         }
 
-        /* "findmaxima/cy_findmaxima.pyx":163
+        /* "findmaxima/cy_findmaxima.pyx":150
  *                     continue
  * 
  *                 cinc += 1             # <<<<<<<<<<<<<<
  * 
- *                 # if peak_img_view[pij] >= 16:
+ *                 exval = img[ey + j, ex + i]
  */
         __pyx_v_cinc = (__pyx_v_cinc + 1);
 
-        /* "findmaxima/cy_findmaxima.pyx":169
- *                 #     continue
+        /* "findmaxima/cy_findmaxima.pyx":152
+ *                 cinc += 1
  * 
  *                 exval = img[ey + j, ex + i]             # <<<<<<<<<<<<<<
  * 
@@ -4243,11 +4205,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_10 >= __pyx_v_img.shape[1])) __pyx_t_9 = 1;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 169, __pyx_L1_error)
+          __PYX_ERR(0, 152, __pyx_L1_error)
         }
         __pyx_v_exval = (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_img.data + __pyx_t_11 * __pyx_v_img.strides[0]) )) + __pyx_t_10)) )));
 
-        /* "findmaxima/cy_findmaxima.pyx":171
+        /* "findmaxima/cy_findmaxima.pyx":154
  *                 exval = img[ey + j, ex + i]
  * 
  *                 if exval > pval:             # <<<<<<<<<<<<<<
@@ -4257,7 +4219,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         __pyx_t_12 = ((__pyx_v_exval > __pyx_v_pval) != 0);
         if (__pyx_t_12) {
 
-          /* "findmaxima/cy_findmaxima.pyx":172
+          /* "findmaxima/cy_findmaxima.pyx":155
  * 
  *                 if exval > pval:
  *                     peak_img_view[p] = 11             # <<<<<<<<<<<<<<
@@ -4271,11 +4233,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
           if (unlikely(__pyx_t_9 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_9);
-            __PYX_ERR(0, 172, __pyx_L1_error)
+            __PYX_ERR(0, 155, __pyx_L1_error)
           }
           *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 11;
 
-          /* "findmaxima/cy_findmaxima.pyx":173
+          /* "findmaxima/cy_findmaxima.pyx":156
  *                 if exval > pval:
  *                     peak_img_view[p] = 11
  *                     peak_img_view[pij] = 13             # <<<<<<<<<<<<<<
@@ -4289,11 +4251,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
           if (unlikely(__pyx_t_9 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_9);
-            __PYX_ERR(0, 173, __pyx_L1_error)
+            __PYX_ERR(0, 156, __pyx_L1_error)
           }
           *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 13;
 
-          /* "findmaxima/cy_findmaxima.pyx":174
+          /* "findmaxima/cy_findmaxima.pyx":157
  *                     peak_img_view[p] = 11
  *                     peak_img_view[pij] = 13
  *                     peak_list_view[peak_inc] = 0             # <<<<<<<<<<<<<<
@@ -4307,11 +4269,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_list_view.shape[0])) __pyx_t_9 = 0;
           if (unlikely(__pyx_t_9 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_9);
-            __PYX_ERR(0, 174, __pyx_L1_error)
+            __PYX_ERR(0, 157, __pyx_L1_error)
           }
           *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_list_view.data) + __pyx_t_10)) )) = 0;
 
-          /* "findmaxima/cy_findmaxima.pyx":175
+          /* "findmaxima/cy_findmaxima.pyx":158
  *                     peak_img_view[pij] = 13
  *                     peak_list_view[peak_inc] = 0
  *                     is_peak = False             # <<<<<<<<<<<<<<
@@ -4320,7 +4282,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           __pyx_v_is_peak = 0;
 
-          /* "findmaxima/cy_findmaxima.pyx":176
+          /* "findmaxima/cy_findmaxima.pyx":159
  *                     peak_list_view[peak_inc] = 0
  *                     is_peak = False
  *                     exnum = 1             # <<<<<<<<<<<<<<
@@ -4329,7 +4291,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           __pyx_v_exnum = 1;
 
-          /* "findmaxima/cy_findmaxima.pyx":177
+          /* "findmaxima/cy_findmaxima.pyx":160
  *                     is_peak = False
  *                     exnum = 1
  *                     status = 1             # <<<<<<<<<<<<<<
@@ -4338,7 +4300,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           __pyx_v_status = 1;
 
-          /* "findmaxima/cy_findmaxima.pyx":178
+          /* "findmaxima/cy_findmaxima.pyx":161
  *                     exnum = 1
  *                     status = 1
  *                     break             # <<<<<<<<<<<<<<
@@ -4347,7 +4309,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           goto __pyx_L15_break;
 
-          /* "findmaxima/cy_findmaxima.pyx":171
+          /* "findmaxima/cy_findmaxima.pyx":154
  *                 exval = img[ey + j, ex + i]
  * 
  *                 if exval > pval:             # <<<<<<<<<<<<<<
@@ -4356,7 +4318,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
         }
 
-        /* "findmaxima/cy_findmaxima.pyx":180
+        /* "findmaxima/cy_findmaxima.pyx":163
  *                     break
  * 
  *                 if exval >= (pval - tol):             # <<<<<<<<<<<<<<
@@ -4366,7 +4328,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         __pyx_t_12 = ((__pyx_v_exval >= (__pyx_v_pval - __pyx_v_tol)) != 0);
         if (__pyx_t_12) {
 
-          /* "findmaxima/cy_findmaxima.pyx":181
+          /* "findmaxima/cy_findmaxima.pyx":164
  * 
  *                 if exval >= (pval - tol):
  *                     if peak_img_view[pij] == 8:             # <<<<<<<<<<<<<<
@@ -4380,12 +4342,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
           if (unlikely(__pyx_t_9 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_9);
-            __PYX_ERR(0, 181, __pyx_L1_error)
+            __PYX_ERR(0, 164, __pyx_L1_error)
           }
           __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) ))) == 8) != 0);
           if (__pyx_t_12) {
 
-            /* "findmaxima/cy_findmaxima.pyx":182
+            /* "findmaxima/cy_findmaxima.pyx":165
  *                 if exval >= (pval - tol):
  *                     if peak_img_view[pij] == 8:
  *                         if clist_view[pij] == index:             # <<<<<<<<<<<<<<
@@ -4399,12 +4361,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_clist_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 182, __pyx_L1_error)
+              __PYX_ERR(0, 165, __pyx_L1_error)
             }
             __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_clist_view.data) + __pyx_t_10)) ))) == __pyx_v_index) != 0);
             if (__pyx_t_12) {
 
-              /* "findmaxima/cy_findmaxima.pyx":183
+              /* "findmaxima/cy_findmaxima.pyx":166
  *                     if peak_img_view[pij] == 8:
  *                         if clist_view[pij] == index:
  *                             status = 9             # <<<<<<<<<<<<<<
@@ -4413,7 +4375,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
               __pyx_v_status = 9;
 
-              /* "findmaxima/cy_findmaxima.pyx":184
+              /* "findmaxima/cy_findmaxima.pyx":167
  *                         if clist_view[pij] == index:
  *                             status = 9
  *                             continue             # <<<<<<<<<<<<<<
@@ -4422,7 +4384,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
               goto __pyx_L14_continue;
 
-              /* "findmaxima/cy_findmaxima.pyx":182
+              /* "findmaxima/cy_findmaxima.pyx":165
  *                 if exval >= (pval - tol):
  *                     if peak_img_view[pij] == 8:
  *                         if clist_view[pij] == index:             # <<<<<<<<<<<<<<
@@ -4431,7 +4393,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             }
 
-            /* "findmaxima/cy_findmaxima.pyx":186
+            /* "findmaxima/cy_findmaxima.pyx":169
  *                             continue
  * 
  *                         status = 2             # <<<<<<<<<<<<<<
@@ -4440,7 +4402,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             __pyx_v_status = 2;
 
-            /* "findmaxima/cy_findmaxima.pyx":187
+            /* "findmaxima/cy_findmaxima.pyx":170
  * 
  *                         status = 2
  *                         is_peak = False             # <<<<<<<<<<<<<<
@@ -4449,7 +4411,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             __pyx_v_is_peak = 0;
 
-            /* "findmaxima/cy_findmaxima.pyx":188
+            /* "findmaxima/cy_findmaxima.pyx":171
  *                         status = 2
  *                         is_peak = False
  *                         exnum = 1             # <<<<<<<<<<<<<<
@@ -4458,7 +4420,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             __pyx_v_exnum = 1;
 
-            /* "findmaxima/cy_findmaxima.pyx":190
+            /* "findmaxima/cy_findmaxima.pyx":173
  *                         exnum = 1
  * 
  *                         peak_img_view[pij] = 8             # <<<<<<<<<<<<<<
@@ -4472,11 +4434,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 190, __pyx_L1_error)
+              __PYX_ERR(0, 173, __pyx_L1_error)
             }
             *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 8;
 
-            /* "findmaxima/cy_findmaxima.pyx":191
+            /* "findmaxima/cy_findmaxima.pyx":174
  * 
  *                         peak_img_view[pij] = 8
  *                         peak_img_view[p] = 10             # <<<<<<<<<<<<<<
@@ -4490,11 +4452,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 191, __pyx_L1_error)
+              __PYX_ERR(0, 174, __pyx_L1_error)
             }
             *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 10;
 
-            /* "findmaxima/cy_findmaxima.pyx":192
+            /* "findmaxima/cy_findmaxima.pyx":175
  *                         peak_img_view[pij] = 8
  *                         peak_img_view[p] = 10
  *                         break             # <<<<<<<<<<<<<<
@@ -4503,7 +4465,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             goto __pyx_L15_break;
 
-            /* "findmaxima/cy_findmaxima.pyx":181
+            /* "findmaxima/cy_findmaxima.pyx":164
  * 
  *                 if exval >= (pval - tol):
  *                     if peak_img_view[pij] == 8:             # <<<<<<<<<<<<<<
@@ -4512,7 +4474,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
           }
 
-          /* "findmaxima/cy_findmaxima.pyx":194
+          /* "findmaxima/cy_findmaxima.pyx":177
  *                         break
  *                     else:
  *                         if expixels_view[pij] != index:             # <<<<<<<<<<<<<<
@@ -4527,12 +4489,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_expixels_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 194, __pyx_L1_error)
+              __PYX_ERR(0, 177, __pyx_L1_error)
             }
             __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_expixels_view.data) + __pyx_t_10)) ))) != __pyx_v_index) != 0);
             if (__pyx_t_12) {
 
-              /* "findmaxima/cy_findmaxima.pyx":195
+              /* "findmaxima/cy_findmaxima.pyx":178
  *                     else:
  *                         if expixels_view[pij] != index:
  *                             expixels_view[pij] = index             # <<<<<<<<<<<<<<
@@ -4546,11 +4508,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
               } else if (unlikely(__pyx_t_10 >= __pyx_v_expixels_view.shape[0])) __pyx_t_9 = 0;
               if (unlikely(__pyx_t_9 != -1)) {
                 __Pyx_RaiseBufferIndexError(__pyx_t_9);
-                __PYX_ERR(0, 195, __pyx_L1_error)
+                __PYX_ERR(0, 178, __pyx_L1_error)
               }
               *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_expixels_view.data) + __pyx_t_10)) )) = __pyx_v_index;
 
-              /* "findmaxima/cy_findmaxima.pyx":194
+              /* "findmaxima/cy_findmaxima.pyx":177
  *                         break
  *                     else:
  *                         if expixels_view[pij] != index:             # <<<<<<<<<<<<<<
@@ -4559,7 +4521,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             }
 
-            /* "findmaxima/cy_findmaxima.pyx":196
+            /* "findmaxima/cy_findmaxima.pyx":179
  *                         if expixels_view[pij] != index:
  *                             expixels_view[pij] = index
  *                         exlist_view[exinc] = pij             # <<<<<<<<<<<<<<
@@ -4573,11 +4535,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_exlist_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 196, __pyx_L1_error)
+              __PYX_ERR(0, 179, __pyx_L1_error)
             }
             *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_exlist_view.data) + __pyx_t_10)) )) = __pyx_v_pij;
 
-            /* "findmaxima/cy_findmaxima.pyx":197
+            /* "findmaxima/cy_findmaxima.pyx":180
  *                             expixels_view[pij] = index
  *                         exlist_view[exinc] = pij
  *                         exinc += 1             # <<<<<<<<<<<<<<
@@ -4586,7 +4548,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             __pyx_v_exinc = (__pyx_v_exinc + 1);
 
-            /* "findmaxima/cy_findmaxima.pyx":198
+            /* "findmaxima/cy_findmaxima.pyx":181
  *                         exlist_view[exinc] = pij
  *                         exinc += 1
  *                         exnum += 1             # <<<<<<<<<<<<<<
@@ -4595,7 +4557,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
             __pyx_v_exnum = (__pyx_v_exnum + 1);
 
-            /* "findmaxima/cy_findmaxima.pyx":199
+            /* "findmaxima/cy_findmaxima.pyx":182
  *                         exinc += 1
  *                         exnum += 1
  *                         peak_img_view[pij] = 16             # <<<<<<<<<<<<<<
@@ -4609,11 +4571,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
             if (unlikely(__pyx_t_9 != -1)) {
               __Pyx_RaiseBufferIndexError(__pyx_t_9);
-              __PYX_ERR(0, 199, __pyx_L1_error)
+              __PYX_ERR(0, 182, __pyx_L1_error)
             }
             *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 16;
 
-            /* "findmaxima/cy_findmaxima.pyx":200
+            /* "findmaxima/cy_findmaxima.pyx":183
  *                         exnum += 1
  *                         peak_img_view[pij] = 16
  *                         status = 3             # <<<<<<<<<<<<<<
@@ -4623,7 +4585,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
             __pyx_v_status = 3;
           }
 
-          /* "findmaxima/cy_findmaxima.pyx":180
+          /* "findmaxima/cy_findmaxima.pyx":163
  *                     break
  * 
  *                 if exval >= (pval - tol):             # <<<<<<<<<<<<<<
@@ -4633,7 +4595,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           goto __pyx_L22;
         }
 
-        /* "findmaxima/cy_findmaxima.pyx":202
+        /* "findmaxima/cy_findmaxima.pyx":185
  *                         status = 3
  *                 else:
  *                     peak_img_view[pij] = 8             # <<<<<<<<<<<<<<
@@ -4648,11 +4610,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
           } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
           if (unlikely(__pyx_t_9 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_9);
-            __PYX_ERR(0, 202, __pyx_L1_error)
+            __PYX_ERR(0, 185, __pyx_L1_error)
           }
           *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 8;
 
-          /* "findmaxima/cy_findmaxima.pyx":203
+          /* "findmaxima/cy_findmaxima.pyx":186
  *                 else:
  *                     peak_img_view[pij] = 8
  *                     status = 4             # <<<<<<<<<<<<<<
@@ -4663,7 +4625,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         }
         __pyx_L22:;
 
-        /* "findmaxima/cy_findmaxima.pyx":204
+        /* "findmaxima/cy_findmaxima.pyx":187
  *                     peak_img_view[pij] = 8
  *                     status = 4
  *                 clist_view[pij] = index             # <<<<<<<<<<<<<<
@@ -4677,14 +4639,14 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_10 >= __pyx_v_clist_view.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 204, __pyx_L1_error)
+          __PYX_ERR(0, 187, __pyx_L1_error)
         }
         *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_clist_view.data) + __pyx_t_10)) )) = __pyx_v_index;
         __pyx_L14_continue:;
       }
       __pyx_L15_break:;
 
-      /* "findmaxima/cy_findmaxima.pyx":205
+      /* "findmaxima/cy_findmaxima.pyx":188
  *                     status = 4
  *                 clist_view[pij] = index
  *             exnum -= 1             # <<<<<<<<<<<<<<
@@ -4695,7 +4657,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       __pyx_L6_continue:;
     }
 
-    /* "findmaxima/cy_findmaxima.pyx":207
+    /* "findmaxima/cy_findmaxima.pyx":190
  *             exnum -= 1
  * 
  *         if is_peak:             # <<<<<<<<<<<<<<
@@ -4705,7 +4667,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     __pyx_t_12 = (__pyx_v_is_peak != 0);
     if (__pyx_t_12) {
 
-      /* "findmaxima/cy_findmaxima.pyx":208
+      /* "findmaxima/cy_findmaxima.pyx":191
  * 
  *         if is_peak:
  *             peak_img_view[p] = 32             # <<<<<<<<<<<<<<
@@ -4719,11 +4681,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 208, __pyx_L1_error)
+        __PYX_ERR(0, 191, __pyx_L1_error)
       }
       *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 32;
 
-      /* "findmaxima/cy_findmaxima.pyx":209
+      /* "findmaxima/cy_findmaxima.pyx":192
  *         if is_peak:
  *             peak_img_view[p] = 32
  *             peak_list_view[peak_inc] = p             # <<<<<<<<<<<<<<
@@ -4737,11 +4699,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_list_view.shape[0])) __pyx_t_9 = 0;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 209, __pyx_L1_error)
+        __PYX_ERR(0, 192, __pyx_L1_error)
       }
       *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_list_view.data) + __pyx_t_10)) )) = __pyx_v_p;
 
-      /* "findmaxima/cy_findmaxima.pyx":210
+      /* "findmaxima/cy_findmaxima.pyx":193
  *             peak_img_view[p] = 32
  *             peak_list_view[peak_inc] = p
  *             peak_inc += 1             # <<<<<<<<<<<<<<
@@ -4750,7 +4712,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  */
       __pyx_v_peak_inc = (__pyx_v_peak_inc + 1);
 
-      /* "findmaxima/cy_findmaxima.pyx":207
+      /* "findmaxima/cy_findmaxima.pyx":190
  *             exnum -= 1
  * 
  *         if is_peak:             # <<<<<<<<<<<<<<
@@ -4760,7 +4722,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       goto __pyx_L26;
     }
 
-    /* "findmaxima/cy_findmaxima.pyx":212
+    /* "findmaxima/cy_findmaxima.pyx":195
  *             peak_inc += 1
  *         else:
  *             if peak_img_view[p] >= 16:             # <<<<<<<<<<<<<<
@@ -4775,12 +4737,12 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
       } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
       if (unlikely(__pyx_t_9 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_9);
-        __PYX_ERR(0, 212, __pyx_L1_error)
+        __PYX_ERR(0, 195, __pyx_L1_error)
       }
       __pyx_t_12 = (((*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) ))) >= 16) != 0);
       if (__pyx_t_12) {
 
-        /* "findmaxima/cy_findmaxima.pyx":213
+        /* "findmaxima/cy_findmaxima.pyx":196
  *         else:
  *             if peak_img_view[p] >= 16:
  *                 peak_img_view[p] = 1             # <<<<<<<<<<<<<<
@@ -4794,11 +4756,11 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
         } else if (unlikely(__pyx_t_10 >= __pyx_v_peak_img_view.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 213, __pyx_L1_error)
+          __PYX_ERR(0, 196, __pyx_L1_error)
         }
         *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_peak_img_view.data) + __pyx_t_10)) )) = 1;
 
-        /* "findmaxima/cy_findmaxima.pyx":212
+        /* "findmaxima/cy_findmaxima.pyx":195
  *             peak_inc += 1
  *         else:
  *             if peak_img_view[p] >= 16:             # <<<<<<<<<<<<<<
@@ -4809,7 +4771,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
     }
     __pyx_L26:;
 
-    /* "findmaxima/cy_findmaxima.pyx":110
+    /* "findmaxima/cy_findmaxima.pyx":100
  *     cdef int status
  *     index = 0
  *     for p in p_indices:             # <<<<<<<<<<<<<<
@@ -4820,7 +4782,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":214
+  /* "findmaxima/cy_findmaxima.pyx":197
  *             if peak_img_view[p] >= 16:
  *                 peak_img_view[p] = 1
  *     return peak_img, peak_list[:peak_inc]             # <<<<<<<<<<<<<<
@@ -4828,24 +4790,24 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_peak_list, 0, __pyx_v_peak_inc, NULL, NULL, NULL, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_peak_list, 0, __pyx_v_peak_inc, NULL, NULL, NULL, 0, 1, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_peak_img);
   __Pyx_GIVEREF(__pyx_v_peak_img);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_peak_img);
+  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_peak_img);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "findmaxima/cy_findmaxima.pyx":79
+  /* "findmaxima/cy_findmaxima.pyx":69
  * #@cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)
- * def findmax(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
+ * def find(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
  * 
  *     cdef int height = img.shape[0]
  */
@@ -4858,7 +4820,7 @@ static PyObject *__pyx_pf_10findmaxima_13cy_findmaxima_4findmax(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
-  __Pyx_AddTraceback("findmaxima.cy_findmaxima.findmax", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("findmaxima.cy_findmaxima.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_peak_img);
@@ -18701,7 +18663,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_dtype_is_object, __pyx_k_dtype_is_object, sizeof(__pyx_k_dtype_is_object), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
-  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
   {&__pyx_n_s_ex, __pyx_k_ex, sizeof(__pyx_k_ex), 0, 0, 1, 1},
@@ -18714,8 +18675,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_expixels_view, __pyx_k_expixels_view, sizeof(__pyx_k_expixels_view), 0, 0, 1, 1},
   {&__pyx_n_s_exval, __pyx_k_exval, sizeof(__pyx_k_exval), 0, 0, 1, 1},
   {&__pyx_n_s_ey, __pyx_k_ey, sizeof(__pyx_k_ey), 0, 0, 1, 1},
-  {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
-  {&__pyx_n_s_findmax, __pyx_k_findmax, sizeof(__pyx_k_findmax), 0, 0, 1, 1},
+  {&__pyx_n_s_find, __pyx_k_find, sizeof(__pyx_k_find), 0, 0, 1, 1},
   {&__pyx_n_s_findmaxima, __pyx_k_findmaxima, sizeof(__pyx_k_findmaxima), 0, 0, 1, 1},
   {&__pyx_n_s_findmaxima_cy_findmaxima, __pyx_k_findmaxima_cy_findmaxima, sizeof(__pyx_k_findmaxima_cy_findmaxima), 0, 0, 1, 1},
   {&__pyx_kp_s_findmaxima_cy_findmaxima_pyx, __pyx_k_findmaxima_cy_findmaxima_pyx, sizeof(__pyx_k_findmaxima_cy_findmaxima_pyx), 0, 0, 1, 0},
@@ -18754,7 +18714,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ns, __pyx_k_ns, sizeof(__pyx_k_ns), 0, 0, 1, 1},
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
-  {&__pyx_kp_s_out_of_bounds, __pyx_k_out_of_bounds, sizeof(__pyx_k_out_of_bounds), 0, 0, 1, 0},
   {&__pyx_n_s_p, __pyx_k_p, sizeof(__pyx_k_p), 0, 0, 1, 1},
   {&__pyx_n_s_p_indices, __pyx_k_p_indices, sizeof(__pyx_k_p_indices), 0, 0, 1, 1},
   {&__pyx_n_s_p_indices_view, __pyx_k_p_indices_view, sizeof(__pyx_k_p_indices_view), 0, 0, 1, 1},
@@ -18770,7 +18729,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pic, __pyx_k_pic, sizeof(__pyx_k_pic), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pij, __pyx_k_pij, sizeof(__pyx_k_pij), 0, 0, 1, 1},
-  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_pval, __pyx_k_pval, sizeof(__pyx_k_pval), 0, 0, 1, 1},
   {&__pyx_n_s_pxy, __pyx_k_pxy, sizeof(__pyx_k_pxy), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
@@ -19029,7 +18987,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * @cython.wraparound(False)
  * def findmaxima(float[:, ::1] img, float tol):             # <<<<<<<<<<<<<<
  *     cdef int [:] alm = all_local_max(img, tol)
- *     return findmax(img, alm, tol)
+ *     return find(img, alm, tol)
  */
   __pyx_tuple__19 = PyTuple_Pack(3, __pyx_n_s_img, __pyx_n_s_tol, __pyx_n_s_alm); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
@@ -19048,17 +19006,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__21);
   __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_findmaxima_cy_findmaxima_pyx, __pyx_n_s_all_local_max, 37, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 37, __pyx_L1_error)
 
-  /* "findmaxima/cy_findmaxima.pyx":79
+  /* "findmaxima/cy_findmaxima.pyx":69
  * #@cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)
- * def findmax(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
+ * def find(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
  * 
  *     cdef int height = img.shape[0]
  */
-  __pyx_tuple__23 = PyTuple_Pack(39, __pyx_n_s_img, __pyx_n_s_p_indices, __pyx_n_s_tol, __pyx_n_s_height, __pyx_n_s_width, __pyx_n_s_consize, __pyx_n_s_peak_img, __pyx_n_s_peak_img_view, __pyx_n_s_ns, __pyx_n_s_peak_list, __pyx_n_s_peak_list_view, __pyx_n_s_peak_inc, __pyx_n_s_exlist, __pyx_n_s_exlist_view, __pyx_n_s_expixels, __pyx_n_s_expixels_view, __pyx_n_s_clist, __pyx_n_s_clist_view, __pyx_n_s_exinc, __pyx_n_s_cinc, __pyx_n_s_exnum, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_p, __pyx_n_s_ex, __pyx_n_s_ey, __pyx_n_s_exlist0, __pyx_n_s_is_peak, __pyx_n_s_kg, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pij, __pyx_n_s_k, __pyx_n_s_pic, __pyx_n_s_index, __pyx_n_s_pval, __pyx_n_s_exval, __pyx_n_s_status, __pyx_n_s_pex); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(39, __pyx_n_s_img, __pyx_n_s_p_indices, __pyx_n_s_tol, __pyx_n_s_height, __pyx_n_s_width, __pyx_n_s_consize, __pyx_n_s_peak_img, __pyx_n_s_peak_img_view, __pyx_n_s_ns, __pyx_n_s_peak_list, __pyx_n_s_peak_list_view, __pyx_n_s_peak_inc, __pyx_n_s_exlist, __pyx_n_s_exlist_view, __pyx_n_s_expixels, __pyx_n_s_expixels_view, __pyx_n_s_clist, __pyx_n_s_clist_view, __pyx_n_s_exinc, __pyx_n_s_cinc, __pyx_n_s_exnum, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_p, __pyx_n_s_ex, __pyx_n_s_ey, __pyx_n_s_exlist0, __pyx_n_s_is_peak, __pyx_n_s_kg, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_pij, __pyx_n_s_k, __pyx_n_s_pic, __pyx_n_s_index, __pyx_n_s_pval, __pyx_n_s_exval, __pyx_n_s_status, __pyx_n_s_pex); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_findmaxima_cy_findmaxima_pyx, __pyx_n_s_findmax, 79, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_findmaxima_cy_findmaxima_pyx, __pyx_n_s_find, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 69, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -19654,7 +19612,7 @@ if (!__Pyx_RefNanny) {
  * @cython.wraparound(False)
  * def findmaxima(float[:, ::1] img, float tol):             # <<<<<<<<<<<<<<
  *     cdef int [:] alm = all_local_max(img, tol)
- *     return findmax(img, alm, tol)
+ *     return find(img, alm, tol)
  */
   __pyx_t_4 = PyCFunction_NewEx(&__pyx_mdef_10findmaxima_13cy_findmaxima_1findmaxima, NULL, __pyx_n_s_findmaxima_cy_findmaxima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -19673,16 +19631,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_all_local_max, __pyx_t_4) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "findmaxima/cy_findmaxima.pyx":79
+  /* "findmaxima/cy_findmaxima.pyx":69
  * #@cython.boundscheck(False)  # Deactivate bounds checking
  * @cython.wraparound(False)
- * def findmax(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
+ * def find(float [:,::1] img, int [:] p_indices, float tol):             # <<<<<<<<<<<<<<
  * 
  *     cdef int height = img.shape[0]
  */
-  __pyx_t_4 = PyCFunction_NewEx(&__pyx_mdef_10findmaxima_13cy_findmaxima_5findmax, NULL, __pyx_n_s_findmaxima_cy_findmaxima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_4 = PyCFunction_NewEx(&__pyx_mdef_10findmaxima_13cy_findmaxima_5find, NULL, __pyx_n_s_findmaxima_cy_findmaxima); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_findmax, __pyx_t_4) < 0) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_find, __pyx_t_4) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "findmaxima/cy_findmaxima.pyx":2
@@ -23126,112 +23084,6 @@ static CYTHON_INLINE int __pyx_memview_set_int(const char *itemp, PyObject *obj)
     }
 }
 
-/* Print */
-  #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static PyObject *__Pyx_GetStdout(void) {
-    PyObject *f = PySys_GetObject((char *)"stdout");
-    if (!f) {
-        PyErr_SetString(PyExc_RuntimeError, "lost sys.stdout");
-    }
-    return f;
-}
-static int __Pyx_Print(PyObject* f, PyObject *arg_tuple, int newline) {
-    int i;
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    for (i=0; i < PyTuple_GET_SIZE(arg_tuple); i++) {
-        PyObject* v;
-        if (PyFile_SoftSpace(f, 1)) {
-            if (PyFile_WriteString(" ", f) < 0)
-                goto error;
-        }
-        v = PyTuple_GET_ITEM(arg_tuple, i);
-        if (PyFile_WriteObject(v, f, Py_PRINT_RAW) < 0)
-            goto error;
-        if (PyString_Check(v)) {
-            char *s = PyString_AsString(v);
-            Py_ssize_t len = PyString_Size(v);
-            if (len > 0) {
-                switch (s[len-1]) {
-                    case ' ': break;
-                    case '\f': case '\r': case '\n': case '\t': case '\v':
-                        PyFile_SoftSpace(f, 0);
-                        break;
-                    default:  break;
-                }
-            }
-        }
-    }
-    if (newline) {
-        if (PyFile_WriteString("\n", f) < 0)
-            goto error;
-        PyFile_SoftSpace(f, 0);
-    }
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-}
-#else
-static int __Pyx_Print(PyObject* stream, PyObject *arg_tuple, int newline) {
-    PyObject* kwargs = 0;
-    PyObject* result = 0;
-    PyObject* end_string;
-    if (unlikely(!__pyx_print)) {
-        __pyx_print = PyObject_GetAttr(__pyx_b, __pyx_n_s_print);
-        if (!__pyx_print)
-            return -1;
-    }
-    if (stream) {
-        kwargs = PyDict_New();
-        if (unlikely(!kwargs))
-            return -1;
-        if (unlikely(PyDict_SetItem(kwargs, __pyx_n_s_file, stream) < 0))
-            goto bad;
-        if (!newline) {
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                goto bad;
-            if (PyDict_SetItem(kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                goto bad;
-            }
-            Py_DECREF(end_string);
-        }
-    } else if (!newline) {
-        if (unlikely(!__pyx_print_kwargs)) {
-            __pyx_print_kwargs = PyDict_New();
-            if (unlikely(!__pyx_print_kwargs))
-                return -1;
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                return -1;
-            if (PyDict_SetItem(__pyx_print_kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                return -1;
-            }
-            Py_DECREF(end_string);
-        }
-        kwargs = __pyx_print_kwargs;
-    }
-    result = PyObject_Call(__pyx_print, arg_tuple, kwargs);
-    if (unlikely(kwargs) && (kwargs != __pyx_print_kwargs))
-        Py_DECREF(kwargs);
-    if (!result)
-        return -1;
-    Py_DECREF(result);
-    return 0;
-bad:
-    if (kwargs != __pyx_print_kwargs)
-        Py_XDECREF(kwargs);
-    return -1;
-}
-#endif
-
 /* MemviewSliceCopyTemplate */
   static __Pyx_memviewslice
 __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
@@ -23676,43 +23528,6 @@ raise_neg_overflow:
         "can't convert negative value to long");
     return (long) -1;
 }
-
-/* PrintOne */
-  #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static int __Pyx_PrintOne(PyObject* f, PyObject *o) {
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    if (PyFile_SoftSpace(f, 0)) {
-        if (PyFile_WriteString(" ", f) < 0)
-            goto error;
-    }
-    if (PyFile_WriteObject(o, f, Py_PRINT_RAW) < 0)
-        goto error;
-    if (PyFile_WriteString("\n", f) < 0)
-        goto error;
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-    /* the line below is just to avoid C compiler
-     * warnings about unused functions */
-    return __Pyx_Print(f, NULL, 0);
-}
-#else
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o) {
-    int res;
-    PyObject* arg_tuple = PyTuple_Pack(1, o);
-    if (unlikely(!arg_tuple))
-        return -1;
-    res = __Pyx_Print(stream, arg_tuple, 1);
-    Py_DECREF(arg_tuple);
-    return res;
-}
-#endif
 
 /* CIntFromPy */
   static CYTHON_INLINE char __Pyx_PyInt_As_char(PyObject *x) {

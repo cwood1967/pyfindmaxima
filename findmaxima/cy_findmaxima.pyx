@@ -11,7 +11,7 @@ noffsets = 8
 @cython.wraparound(False) 
 def findmaxima(float[:, ::1] img, float tol):
     cdef int [:] alm = all_local_max(img, tol)
-    return findmax(img, alm, tol)
+    return find(img, alm, tol)
 
 #@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
@@ -65,18 +65,8 @@ def all_local_max(float[:, ::1] img, float tol):
 
 
 #@cython.boundscheck(False)  # Deactivate bounds checking
-# @cython.wraparound(False) 
-# cdef int is_in(int [::1] vect, int a, int inc):
-#     cdef Py_ssize_t i
-#     for i in range(inc-1,-1,-1):
-#         if vect[i] == a:
-#             return 1
-#     return 0
-
-
-#@cython.boundscheck(False)  # Deactivate bounds checking
 @cython.wraparound(False) 
-def findmax(float [:,::1] img, int [:] p_indices, float tol):
+def find(float [:,::1] img, int [:] p_indices, float tol):
 
     cdef int height = img.shape[0]
     cdef int width = img.shape[1]
@@ -116,10 +106,7 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
         exnum = 1
         cinc = 0
         status = 0
-        # for k in range(consize):
-        #     clist_view[k] = 0
-        #     expixels_view[k] = 0
-
+        
         expixels_view[p] = index
         x = p % width
         y = p // width
@@ -153,7 +140,7 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                 if pij == p:
                     continue
                 if pij >= width*height or pij < 0:
-                    print("out of bounds", pij)
+                    #print("out of bounds", pij)
                     continue
                 
                 if clist_view[pij] == index:
@@ -161,10 +148,6 @@ def findmax(float [:,::1] img, int [:] p_indices, float tol):
                     continue
                 
                 cinc += 1
-                
-                # if peak_img_view[pij] >= 16:
-                #     status = 5
-                #     continue
 
                 exval = img[ey + j, ex + i]
 

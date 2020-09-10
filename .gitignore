@@ -7,6 +7,5 @@ Images
 __pycache__/
 *.py[cod]
 *.so
-
 dist
 build
