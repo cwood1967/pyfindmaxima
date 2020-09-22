@@ -3,9 +3,6 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "include_dirs": [
-            "/Users/cjw/opt/miniconda3/envs/deep/lib/python3.8/site-packages/numpy/core/include"
-        ],
         "name": "simple.sumpy_cy",
         "sources": [
             "simple/sumpy_cy.pyx"
