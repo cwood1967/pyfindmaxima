@@ -1,7 +1,6 @@
 import os
-from setuptools import setup, Extension
+from setuptools import setup
 from Cython.Build import cythonize
-import numpy as np
 
 setup(
     name="Find Maxima",

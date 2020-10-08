@@ -2096,7 +2096,7 @@ static PyObject *__pyx_pf_6simple_8sumpy_cy_sum(CYTHON_UNUSED PyObject *__pyx_se
  * 
  *     for i in range(len(x)):             # <<<<<<<<<<<<<<
  *         s += x[i]*x[i]
- * 
+ *     i = 4
  */
   __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_x); 
   __pyx_t_2 = __pyx_t_1;
@@ -2107,7 +2107,7 @@ static PyObject *__pyx_pf_6simple_8sumpy_cy_sum(CYTHON_UNUSED PyObject *__pyx_se
  * 
  *     for i in range(len(x)):
  *         s += x[i]*x[i]             # <<<<<<<<<<<<<<
- * 
+ *     i = 4
  *     return np.sqrt(s)
  */
     __pyx_t_4 = __pyx_v_i;
@@ -2133,9 +2133,17 @@ static PyObject *__pyx_pf_6simple_8sumpy_cy_sum(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_v_s = (__pyx_v_s + ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_4)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_6)) )))));
   }
 
+  /* "simple/sumpy_cy.pyx":10
+ *     for i in range(len(x)):
+ *         s += x[i]*x[i]
+ *     i = 4             # <<<<<<<<<<<<<<
+ *     return np.sqrt(s)
+ */
+  __pyx_v_i = 4;
+
   /* "simple/sumpy_cy.pyx":11
  *         s += x[i]*x[i]
- * 
+ *     i = 4
  *     return np.sqrt(s)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
