@@ -1,28 +1,27 @@
 import numpy as np
 import tifffile
+import pandas as pd
 import time
 
-from findmaxima.cy_findmaxima import all_local_max, findmaxima
+from findmaxima.findmaxima import findmaxima
 
-tr = time.time()
-x = tifffile.imread("findmaxima/Images/test_09_02.tif")
-x = x.astype(np.float32)
-t0 = time.time()
-tol = 400
-#res = all_local_max(x, tol)
-pk, pklist = findmaxima(x, tol)
-if 596732 in pklist:
-    print("yes!")
-else:
-    print("no???")
-#print(pklist)
-print(len(pklist))
+def test_findmax():
+    image = tifffile.imread("findmaxima/_tests/Images/test_image.tif")
+    tol = 800
+    yc, xc = findmaxima(image, tol)
+    assert len(yc) == 4
+    assert len(xc) == 4
+    
+    df = pd.read_csv("findmaxima/_tests/Images/test_results.csv")
+    
+    for row in df.itertuples():
+        i = row.peak
+        x = xc[i]
+        y = yc[i]
+        assert x == row.xm
+        assert y == row.ym
+        
+        assert image[y, x] == row.mean
 
-for i, p in enumerate(pklist):
-    xi = p % x.shape[1]
-    yi = p // x.shape[1]
-    #if xi==778:
-    print("{:4} {:6}  {:6} {:8}".format(i, xi, yi, x[yi, xi]))
-
-tf = time.time()
-print(tf - tr, tf - t0)
+if __name__ == '__main__':
+    test_findmax()
