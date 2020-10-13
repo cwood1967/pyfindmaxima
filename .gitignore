@@ -1,5 +1,5 @@
 build
-Images
+#Images
 .DS_Store
 .vscode
 .env
