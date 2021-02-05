@@ -29,7 +29,7 @@ jobs:
       - name: Build wheels
         uses: joerick/cibuildwheel@v1.9.0
         env:
-          CIBW_BUILD: cp38-*_x86_64 
+          CIBW_BUILD: cp38-*_x86_64 cp38-win_amd64 
 
       - uses: actions/upload-artifact@v2
         with:
