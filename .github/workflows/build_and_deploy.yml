@@ -2,8 +2,6 @@ name: Build wheels and deploy
 
 on:
   push:
-    branches:
-      - master
     tags:
       - "v*"
   workflow_dispatch:
@@ -23,6 +21,10 @@ jobs:
         name: Set up Python
         with:
           python-version: "3.7"
+
+        - name: Install Visual C++ for Python 2.7
+          if: runner.os == 'Windows'
+          run: choco install vcpython27 -f -y
 
       - name: Build wheels
         uses: joerick/cibuildwheel@v1.9.0
