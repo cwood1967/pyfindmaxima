@@ -1,9 +1,9 @@
-name: deploy
+name: Build wheels and deploy 
 
 on:
   push:
     branches:
-      - main
+      - master
     tags:
       - "v*"
   workflow_dispatch:
