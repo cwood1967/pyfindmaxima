@@ -7,8 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:    
-  env:
-    CIBW_BUILD: cp38-*_x86_64 
   build_wheels:
     name: build python wheels
     runs-on: ${{ matrix.os }} 
@@ -17,6 +15,9 @@ jobs:
         os: [ubuntu-20.04, windows-latest, macos-latest]
 
     steps:
+      env:
+        CIBW_BUILD: cp38-*_x86_64 
+
       - uses: actions/checkout@v2
 
       - uses: actions/setup-python@v2
