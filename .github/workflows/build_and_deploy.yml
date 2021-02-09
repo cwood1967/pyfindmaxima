@@ -47,7 +47,7 @@ jobs:
           python-version: '3.8'
 
       - name: Build sdist
-        run python setup.py sdist
+        run: python setup.py sdist
 
       - uses: actions/upload-artifacts@v2
         with:
