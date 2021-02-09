@@ -1,5 +1,6 @@
 from setuptools import Extension, setup
 import setuptools
+from Cython.Build import cythonize
 
 extensions = Extension("cy_findmaxima", ["findmaxima/cy_findmaxima.pyx"])
 setup(
