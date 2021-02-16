@@ -3,10 +3,10 @@ name: Tests
 on: 
   push:
     branches:
-      - xmaster
+      - master
   pull_request:
     branches:
-      - xmaster
+      - master
   workflow_dispatch:
 
 jobs:

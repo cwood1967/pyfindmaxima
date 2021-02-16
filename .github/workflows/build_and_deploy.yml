@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04, windows-latest, macos-latest]
+        cibw_python: [ 'cp37-*', 'cp38-*', 'cp39-*' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -22,14 +23,14 @@ jobs:
         with:
           python-version: "3.7"
 
-      - name: Install Visual C++ for Python 2.7
-        if: runner.os == 'Windows'
-        run: choco install vcpython27 -f -y
+      # - name: Install Visual C++ for Python 2.7
+      #   if: runner.os == 'Windows'
+      #   run: choco install vcpython27 -f -y
 
       - name: Build wheels
         uses: joerick/cibuildwheel@v1.9.0
         env:
-          CIBW_BUILD: cp38-*_x86_64 cp38-win_amd64 
+          CIBW_BUILD: ${{ matrix.cibw_python }} 
 
       - uses: actions/upload-artifact@v2
         with:
