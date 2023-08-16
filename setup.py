@@ -13,4 +13,8 @@ setup(
     package_data = {'findmaxima':['*.pyx']},
     packages=setuptools.find_packages(),
     zip_safe=False,
+    license="APACHE",
+    license_files=["LICENSE"],
+    author="Chris Wood",
+    url="https://github.com/cwood1967/pyfindmaxima",
 )
