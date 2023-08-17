@@ -17,4 +17,5 @@ setup(
     #license_files=["LICENSE"],
     author="Chris Wood",
     url="https://github.com/cwood1967/pyfindmaxima",
+    long_description="Find local maxima in a 2D image, similar to ImageJ Find Maxima."
 )
