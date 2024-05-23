@@ -1,2 +1,6 @@
 [build-system]
 requires = ["setuptools", "wheel", "Cython"]
+
+[project]
+name = "pyfindmaxima"
+description = "Find local maxima in a 2D image, similar to ImageJ Find Maxima."
