@@ -3,4 +3,5 @@ requires = ["setuptools", "wheel", "Cython"]
 
 [project]
 name = "pyfindmaxima"
+version = 0.1.1.1
 description = "Find local maxima in a 2D image, similar to ImageJ Find Maxima."
