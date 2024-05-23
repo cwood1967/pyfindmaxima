@@ -8,3 +8,4 @@ description = "Find local maxima in a 2D image, similar to ImageJ Find Maxima."
 dependencies = [
     "numpy"
 ]
+license = "APACHE"
