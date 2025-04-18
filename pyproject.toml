@@ -1,2 +1,45 @@
+[project]
+name = "pyfindmaxima"
+version = "0.1.2"
+description = Find peaks in images like ImageJ FindMaxima
+author = Chris Wood
+license = { file = "LICENSE"} 
+
+requires-python = ">=3.10"
+
+dependencies = ["numpy>1.20"]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Licence :: OSI Approved :: Apache License",
+  "Operating System :: MacOS", 
+  "Operating System :: Microsoft :: Windows", 
+  "Operating System :: Linux", 
+]
+
+[project.urls]
+source = "https://github.com/cwood1967/pyfindmaxima"
+
 [build-system]
-requires = ["setuptools>61.0", "wheel", "Cython"]
+requires = ["meson-python>0.16.0", "Cython>=3.0.10"]
+build-backend = "mesonpy"
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[tool.pixi.dependencies]
+python = "==3.12*"
+
+[tool.pixi.pypi-dependencies]
+numpy = ">=1.20"
+
+[dependencies]
+python = ">=3.10"
+numpy = ">=1.20"
+
+
+
