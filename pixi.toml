@@ -1,0 +1,10 @@
+name = "pyfindmaxima"
+version = "0.1.2"
+
+[dependencies]
+python = ">=3.9"
+numpy
+
+[build-dependencies]
+cython = "*"
+
