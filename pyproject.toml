@@ -1,43 +1,54 @@
 [project]
 name = "pyfindmaxima"
-version = "0.1.2"
+dynamic = ["version"]
 description = "Find peaks in images like ImageJ FindMaxima"
-authors = [{name = "Chris Wood"}]
-license = { file = "LICENSE"} 
+authors = [{name = "Chris Wood", email = "cjw@stowers.org"}]
+license = { file = "LICENSE" }
 
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
-#dependencies = ["python>=3.10", "numpy>1.20"]
+dependencies = ["numpy>=1.20"]
 
 classifiers = [
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
-  "Licence :: OSI Approved :: Apache License",
-  "Operating System :: MacOS", 
-  "Operating System :: Microsoft :: Windows", 
-  "Operating System :: Linux", 
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
 ]
-dependencies = ["build>=1.2.2.post1,<2"]
+
+[project.optional-dependencies]
+test = ["pytest", "tifffile", "pandas"]
 
 [project.urls]
 source = "https://github.com/cwood1967/pyfindmaxima"
 
 [build-system]
-requires = ["meson-python>0.16.0", "Cython>=3.0.10", "wheel"]
+requires = ["meson-python>=0.16.0", "Cython>=3.0.10"]
 build-backend = "mesonpy"
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
 
 [tool.pixi.dependencies]
-python = "==3.12.10"
+python = ">=3.11,<3.14"
+c-compiler = "*"
+cython = ">=3.0.10"
+meson-python = ">=0.16.0"
+ninja = "*"
+numpy = ">=1.20"
+python-build = "*"
+pytest = "*"
+tifffile = "*"
+pandas = "*"
 
 [tool.pixi.pypi-dependencies]
-numpy = ">=1.20"
+pyfindmaxima = { path = ".", editable = true }
 
-
-
-
+[tool.pixi.tasks]
+test = "cd src && pytest findmaxima/_tests -v"
+build-sdist = "python -m build --sdist"
