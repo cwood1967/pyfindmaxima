@@ -23,5 +23,23 @@ def test_findmax():
         
         assert image[y, x] == row.mean
 
+def test_findmax_napari():
+    image = tifffile.imread("findmaxima/_tests/Images/test_image.tif")
+    tol = 800
+    points = findmaxima(image, tol, napari_points=True)
+    assert len(points) == 4
+    assert points.shape == (4, 2) 
+    
+    df = pd.read_csv("findmaxima/_tests/Images/test_results.csv")
+
+    for row in df.itertuples():
+        i = row.peak
+        x = points[i, 1]
+        y = points[i, 0]
+        assert x == row.xm
+        assert y == row.ym
+        
+        assert image[y, x] == row.mean
+
 if __name__ == '__main__':
     test_findmax()
