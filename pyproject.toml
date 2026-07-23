@@ -2,6 +2,7 @@
 name = "pyfindmaxima"
 dynamic = ["version"]
 description = "Find peaks in images like ImageJ FindMaxima"
+readme = "README.md"
 authors = [{name = "Chris Wood", email = "cjw@stowers.org"}]
 license = { file = "LICENSE" }
 
